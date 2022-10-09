@@ -1,6 +1,7 @@
 import random
 from os.path import exists
 import sys
+import tkinter as tk
 
 def writefilm(title):
     print("Ok! Adding {} to your films list.".format(title))
@@ -149,13 +150,26 @@ def whattowatch(what):
             choosing_what = input("\nSo? what do you want?\n")
             continue
 
-print("\nHi, Welcome to WhatToWatch! developed by therealmarius")
-print("Please select one of the options above:")
-print("\n1: Add a film")
-print("2: Add a series")
-print("3: Choose a film/series for me")
-print("4: Open my GitHub")
-print("5: That's it for today. Goodbye!")
+window = tk.Tk()
+window.title("What to Watch")
+window.resizable(width=True, height=True)
+
+welcome_lbl = tk.Label(text="Hi, Welcome to WhatToWatch! developed by therealmarius")
+welcome_lbl.pack()
+
+btn_add_film = tk.Button(text="Add a film", width=10)
+btn_add_film.pack()
+
+btn_add_series = tk.Button(text="Add a series", width=10)
+btn_add_series.pack()
+
+btn_random = tk.Button(text="Choose a random film/series for me")
+btn_random.pack()
+
+btn_github = tk.Button(text="Open my GitHub")
+btn_github.pack()
+
+window.mainloop()
 
 main = input("\nSo! What do you want to do?\n")
 
@@ -192,5 +206,5 @@ while True:
 
     #WhatToWatch developed by therealmarius
     #Under MIT License
-    #Check the GitHub Page projetc
+    #Check the GitHub Page project
     #https://github.com/therealmarius/What-To-Watch
