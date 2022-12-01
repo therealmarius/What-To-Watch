@@ -2,25 +2,25 @@ import random
 from os.path import exists
 import sys
 
-def write_film(title):
+def write_film(title) -> None:
     print("Ok! Adding {} to your films list.".format(title))
     with open("filmslist.txt", "a+") as file:
         file.write("{}\n".format(title))
         file.close()
 
-def write_series(title):
+def write_series(title) -> None:
     print("Ok! Adding {} to your series list.".format(title))
     with open("serieslist.txt", "a+") as file:
         file.write("{}\n".format(title))
         file.close()
 
-def add_films():
-    film_title = input("Ok! What is the title of the film you want to add?\n")
-    verification = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
+def add_films() -> None:
+    film_title:str = input("Ok! What is the title of the film you want to add?\n")
+    verification:str = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
     while True:
         if verification == "yes":
             write_film(film_title)
-            more = input("Do you want to add another film?\n").lower()
+            more:str = input("Do you want to add another film?\n").lower()
             while True:    
                 if more == "yes":
                     add_films()
@@ -29,27 +29,27 @@ def add_films():
                     sys.exit()
                 else:
                     print("Please awnser by Yes or No.")
-                    more = input("Do you want to add another film?\n").lower()
+                    more:str = input("Do you want to add another film?\n").lower()
                     continue
             break
         
         elif verification == "no":
-            film_title = input("Ok! What is the title of the film you want to add?\n")
-            verification = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
+            film_title:str = input("Ok! What is the title of the film you want to add?\n")
+            verification:str = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
             continue
 
         else:
             print("Please awnser by Yes or No.")
-            verification = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
+            verification:str = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
             continue
 
 def add_series():
-    series_title = input("Ok! What is the title of the series you want to add?\n")
-    verification = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
+    series_title:str = input("Ok! What is the title of the series you want to add?\n")
+    verification:str = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
     while True:
         if verification == "yes":
             write_series(series_title)
-            more = input("Do you want to add another series?\n").lower()
+            more:str = input("Do you want to add another series?\n").lower()
             while True:
                 if more == "yes":
                     add_films()
