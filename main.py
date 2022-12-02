@@ -2,80 +2,80 @@ import random
 from os.path import exists
 import sys
 
-def writefilm(title):
+def write_film(title) -> None:
     print("Ok! Adding {} to your films list.".format(title))
     with open("filmslist.txt", "a+") as file:
         file.write("{}\n".format(title))
         file.close()
 
-def writeseries(title):
+def write_series(title) -> None:
     print("Ok! Adding {} to your series list.".format(title))
     with open("serieslist.txt", "a+") as file:
         file.write("{}\n".format(title))
         file.close()
 
-def addfilms():
-    film_title = input("Ok! What is the title of the film you want to add?\n")
-    verification = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
+def add_films() -> None:
+    film_title:str = input("Ok! What is the title of the film you want to add?\n")
+    verification:str = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
     while True:
         if verification == "yes":
-            writefilm(film_title)
-            more = input("Do you want to add another film?\n").lower()
+            write_film(film_title)
+            more:str = input("Do you want to add another film?\n").lower()
             while True:    
                 if more == "yes":
-                    addfilms()
+                    add_films()
                     break
                 elif more == "no":
                     sys.exit()
                 else:
                     print("Please awnser by Yes or No.")
-                    more = input("Do you want to add another film?\n").lower()
+                    more:str = input("Do you want to add another film?\n").lower()
                     continue
             break
         
         elif verification == "no":
-            film_title = input("Ok! What is the title of the film you want to add?\n")
-            verification = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
+            film_title:str = input("Ok! What is the title of the film you want to add?\n")
+            verification:str = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
             continue
 
         else:
             print("Please awnser by Yes or No.")
-            verification = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
+            verification:str = input("Do you want to add {} to your films list?\n".format(film_title)).lower()
             continue
 
-def addseries():
-    series_title = input("Ok! What is the title of the series you want to add?\n")
-    verification = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
+def add_series():
+    series_title:str = input("Ok! What is the title of the series you want to add?\n")
+    verification:str = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
     while True:
         if verification == "yes":
-            writeseries(series_title)
-            more = input("Do you want to add another series?\n").lower()
+            write_series(series_title)
+            more:str = input("Do you want to add another series?\n").lower()
             while True:
                 if more == "yes":
-                    addfilms()
+                    add_films()
                     break
                 elif more == "no":
                     sys.exit()
                 else:
                     print("Please awnser by Yes or No.")
-                    more = input("Do you want to add another series?\n").lower()
+                    more:str = input("Do you want to add another series?\n").lower()
                     continue
             break
 
         elif verification == "no":
-            series_title = input("Ok! What is the title of the series you want to add?\n")
-            verification = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
+            series_title:str = input("Ok! What is the title of the series you want to add?\n")
+            verification:str = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
             continue
 
         else:
             print("Please awnser by Yes or No.")
-            verification = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
+            verification:str = input("Do you want to add {} to your series list?\n".format(series_title)).lower()
             continue
 
-def whattowatch(what):
+def what_to_watch(what):
     while True:
         if what == "1":
-            file_exists = exists("filmslist.txt")
+            file_exists:bool = exists("filmslist.txt")
             while True:
                 if file_exists == False:
                     print("Please add before films in your list.")
@@ -85,7 +85,7 @@ def whattowatch(what):
             films_list = []
             with open("filmslist.txt", "r") as file:
                 for lines in file:
-                    line = lines.strip()
+                    line:str = lines.strip()
                     films_list.append(line)
                 file.close()
             #DEBUG:
@@ -94,7 +94,7 @@ def whattowatch(what):
             break
 
         elif what == "2":
-            file_exists = exists("serieslist.txt")
+            file_exists:bool = exists("serieslist.txt")
             while True:
                 if file_exists == False:
                     print("Please add before series in your list.")
@@ -104,7 +104,7 @@ def whattowatch(what):
             series_list = []
             with open("serieslist.txt", "r") as file:
                 for lines in file:
-                    line = lines.strip()
+                    line:str = lines.strip()
                     series_list.append(line)
                 file.close()
             #DEBUG:
@@ -113,14 +113,14 @@ def whattowatch(what):
             break
         
         elif what == "3":
-            file_exists = exists("filmslist.txt")
+            file_exists:bool = exists("filmslist.txt")
             while True:
                 if file_exists == False:
                     print("Please add before films AND series in your list.")
                     break
                 else:
                     break
-            file_exists = exists("serieslist.txt")
+            file_exists:bool = exists("serieslist.txt")
             while True:
                 if file_exists == False:
                     print("Please add before films AND series in your list.")
@@ -130,12 +130,12 @@ def whattowatch(what):
             films_and_series_list = []
             with open("filmslist.txt", "r") as file:
                 for lines in file:
-                    line = lines.strip()
+                    line:str = lines.strip()
                     films_and_series_list.append(line)
                 file.close()
             with open("serieslist.txt", "r") as file:
                 for lines in file:
-                    line = lines.strip()
+                    line:str = lines.strip()
                     films_and_series_list.append(line)
                 file.close()
             #DEBUG:
@@ -157,15 +157,15 @@ print("3: Choose a film/series for me")
 print("4: Open my GitHub")
 print("5: That's it for today. Goodbye!")
 
-main = input("\nSo! What do you want to do?\n")
+main:str = input("\nSo! What do you want to do?\n")
 
 while True:
     if main == "1":
-        addfilms()
+        add_films()
         continue
     
     elif main == "2":
-        addseries()
+        add_series()
         continue
     
     elif main == "3":
@@ -175,7 +175,7 @@ while True:
         print("2: Series")
         print("3: Both")
         choosing_what = input("\nSo? what do you want?\n")
-        whattowatch(choosing_what)
+        what_to_watch(choosing_what)
         break
     
     elif main == "4":
@@ -187,7 +187,7 @@ while True:
 
     else:
         print("Sorry, I don't understand. Please awnser with the numbers only.")
-        main = input("\nSo! What do you want to do?\n")
+        main:str = input("\nSo! What do you want to do?\n")
         continue
 
     #WhatToWatch developed by therealmarius
